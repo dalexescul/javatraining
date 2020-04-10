@@ -1,10 +1,14 @@
 package com.home.javatraining.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "customer")
@@ -32,6 +36,12 @@ public class Customer extends AbstractTemporalEntity implements Serializable {
 
     @Column(name = "residency", nullable = false)
     private String residency;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Account> accounts;
+
+    @OneToMany(mappedBy = "customer")
+    private List<CustomerHistory> history;
 
     public String getAddress() {
         return address;
@@ -87,5 +97,13 @@ public class Customer extends AbstractTemporalEntity implements Serializable {
 
     public void setResidency(String residency) {
         this.residency = residency;
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public List<CustomerHistory> getHistory() {
+        return history;
     }
 }

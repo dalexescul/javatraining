@@ -1,8 +1,6 @@
 package com.home.javatraining.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -10,16 +8,17 @@ import java.io.Serializable;
 public class CustomerHistory extends AbstractTemporalEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Column(name = "changeField")
+    @Column(name = "change_field")
     private String changeField;
 
-    @Column(name = "customerId")
-    private String customerId;
+    @ManyToOne()
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
 
-    @Column(name = "newValue")
+    @Column(name = "new_value")
     private String newValue;
 
-    @Column(name = "oldValue")
+    @Column(name = "old_value")
     private String oldValue;
 
     

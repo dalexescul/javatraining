@@ -10,17 +10,17 @@ import java.io.Serializable;
 public class AccountHistory extends AbstractTemporalEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Column(name = "accountId")
-    private String accountId;
+    @ManyToOne()
+    @JoinColumn(name = "account_id", nullable = false)
+    private Account account;
 
-    @Column(name = "changeField")
+    @Column(name = "change_field")
     private String changeField;
 
-    @Column(name = "newValue")
+    @Column(name = "new_value")
     private String newValue;
 
-    @Column(name = "oldValue")
+    @Column(name = "old_value")
     private String oldValue;
 
-    
 }

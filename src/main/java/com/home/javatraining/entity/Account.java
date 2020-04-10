@@ -1,9 +1,10 @@
 package com.home.javatraining.entity;
 
-import org.hibernate.annotations.GenericGenerator;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Table(name = "account")
 @Entity
@@ -16,14 +17,24 @@ public class Account extends AbstractTemporalEntity implements Serializable {
     @Column(name = "currency", nullable = false)
     private String currency;
 
-    @Column(name = "ownerId")
-    private String ownerId;
+    @ManyToOne()
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
 
-    @Column(name = "restrictionFlag", nullable = false)
-    private Integer restrictionFlag = 1;
+    @Column(name = "is_restricted", nullable = false)
+    private Boolean isRestricted = false;
 
     @Column(name = "status", nullable = false)
     private Integer status = 1;
 
-    
+    @OneToMany(mappedBy = "account")
+    private List<AccountHistory> history;
+
+    public List<AccountHistory> getHistory() {
+        return history;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
 }
