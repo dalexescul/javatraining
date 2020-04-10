@@ -1,7 +1,6 @@
 package com.home.javatraining.controller;
 
 import com.home.javatraining.entity.Account;
-import com.home.javatraining.manager.AbstractManager;
 import com.home.javatraining.manager.AccountManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
