@@ -1,5 +1,6 @@
 package com.home.javatraining.controller;
 
+import com.home.javatraining.entity.Account;
 import com.home.javatraining.manager.AbstractManager;
 import com.home.javatraining.manager.AccountManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,12 @@ public class AccountController extends AbstractRestController {
     }
 
     @Override
-    public AbstractManager getManager() {
+    public AccountManager getManager() {
         return accountManager;
+    }
+
+    @Override
+    public Class getEntityClass() {
+        return Account.class;
     }
 }

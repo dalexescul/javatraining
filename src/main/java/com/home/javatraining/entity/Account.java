@@ -1,8 +1,8 @@
 package com.home.javatraining.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,9 +14,11 @@ public class Account extends AbstractTemporalEntity implements Serializable {
     @Column(name = "balance", nullable = false)
     private Double balance = 0D;
 
+    @NotBlank()
     @Column(name = "currency", nullable = false)
     private String currency;
 
+    @NotNull()
     @ManyToOne()
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
@@ -36,5 +38,33 @@ public class Account extends AbstractTemporalEntity implements Serializable {
 
     public Customer getCustomer() {
         return customer;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Boolean getRestricted() {
+        return isRestricted;
+    }
+
+    public void setRestricted(Boolean restricted) {
+        isRestricted = restricted;
     }
 }

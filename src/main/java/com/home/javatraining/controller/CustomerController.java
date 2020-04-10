@@ -1,5 +1,6 @@
 package com.home.javatraining.controller;
 
+import com.home.javatraining.entity.Customer;
 import com.home.javatraining.manager.AbstractManager;
 import com.home.javatraining.manager.CustomerManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,13 @@ public class CustomerController extends AbstractRestController {
     }
 
     @Override
-    public AbstractManager getManager() {
+    public CustomerManager getManager() {
         return customerManager;
+    }
+
+    @Override
+    public Class getEntityClass() {
+        return Customer.class;
     }
 
 }

@@ -1,6 +1,8 @@
 package com.home.javatraining.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -8,9 +10,11 @@ import java.io.Serializable;
 public class CustomerHistory extends AbstractTemporalEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @NotBlank()
     @Column(name = "change_field")
     private String changeField;
 
+    @NotNull()
     @ManyToOne()
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;

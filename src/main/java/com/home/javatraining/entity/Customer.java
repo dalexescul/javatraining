@@ -1,11 +1,12 @@
 package com.home.javatraining.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
@@ -16,24 +17,31 @@ public class Customer extends AbstractTemporalEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @NotBlank()
     @Column(name = "address", nullable = false)
     private String address;
 
+    @NotNull()
     @Column(name = "date_of_birth", nullable = false)
     private Date dateOfBirth;
 
     @Column(name = "date_of_death")
     private Date dateOfDeath;
 
+    @NotBlank()
+    @Email()
     @Column(name = "email")
     private String email;
 
+    @NotBlank()
     @Column(name = "full_name", nullable = false)
     private String fullName;
 
+    @NotBlank()
     @Column(name = "mobile_no")
     private String mobileNo;
 
+    @NotBlank()
     @Column(name = "residency", nullable = false)
     private String residency;
 

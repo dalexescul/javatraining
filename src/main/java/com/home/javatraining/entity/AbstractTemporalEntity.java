@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -24,6 +25,7 @@ public abstract class AbstractTemporalEntity {
     @Column(name = "id", insertable = false, nullable = false)
     private String id;
 
+    @NotNull()
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
