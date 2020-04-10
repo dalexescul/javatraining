@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController()
 @RequestMapping(path = "/account")
-public class AccountController extends AbstractRestController {
+public class AccountController extends AbstractRestController<Account> {
 
     private AccountManager accountManager;
 
@@ -23,7 +23,7 @@ public class AccountController extends AbstractRestController {
     }
 
     @Override
-    public Class getEntityClass() {
+    public Class<Account> getEntityClass() {
         return Account.class;
     }
 }

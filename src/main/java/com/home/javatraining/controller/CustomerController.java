@@ -1,7 +1,6 @@
 package com.home.javatraining.controller;
 
 import com.home.javatraining.entity.Customer;
-import com.home.javatraining.manager.AbstractManager;
 import com.home.javatraining.manager.CustomerManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController()
 @RequestMapping(path = "/customer")
-public class CustomerController extends AbstractRestController {
+public class CustomerController extends AbstractRestController<Customer> {
 
     private CustomerManager customerManager;
 
@@ -24,7 +23,7 @@ public class CustomerController extends AbstractRestController {
     }
 
     @Override
-    public Class getEntityClass() {
+    public Class<Customer> getEntityClass() {
         return Customer.class;
     }
 

@@ -1,11 +1,10 @@
 package com.home.javatraining.manager;
 
-import com.home.javatraining.entity.AbstractTemporalEntity;
 import com.home.javatraining.entity.Customer;
 import com.home.javatraining.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class CustomerManager extends AbstractManager {
+public class CustomerManager extends AbstractManager<Customer> {
 
     private CustomerRepository customerRepository;
 
@@ -15,19 +14,17 @@ public class CustomerManager extends AbstractManager {
     }
 
     @Override
-    public Customer updateOne(AbstractTemporalEntity oldInstance, AbstractTemporalEntity updateData) {
-        Customer customerInstance = (Customer) oldInstance;
-        Customer customerUpdateData = (Customer) updateData;
+    public Customer updateOne(Customer oldInstance, Customer updateData) {
 
-        customerInstance.setAddress(customerUpdateData.getAddress());
-        customerInstance.setResidency(customerUpdateData.getResidency());
-        customerInstance.setEmail(customerUpdateData.getEmail());
-        customerInstance.setDateOfBirth(customerUpdateData.getDateOfBirth());
-        customerInstance.setDateOfDeath(customerUpdateData.getDateOfDeath());
-        customerInstance.setFullName(customerUpdateData.getFullName());
-        customerInstance.setMobileNo(customerUpdateData.getMobileNo());
+        oldInstance.setAddress(updateData.getAddress());
+        oldInstance.setResidency(updateData.getResidency());
+        oldInstance.setEmail(updateData.getEmail());
+        oldInstance.setDateOfBirth(updateData.getDateOfBirth());
+        oldInstance.setDateOfDeath(updateData.getDateOfDeath());
+        oldInstance.setFullName(updateData.getFullName());
+        oldInstance.setMobileNo(updateData.getMobileNo());
 
-        return this.getRepository().saveAndFlush(customerInstance);
+        return this.getRepository().saveAndFlush(oldInstance);
     }
 
     public CustomerRepository getRepository() {
